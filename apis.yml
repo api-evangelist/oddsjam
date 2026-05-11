@@ -31,6 +31,13 @@ apis:
 common:
   - type: Website
     url: https://oddsjam.com/
+  - type: Integrations
+    url: https://oddsjam.com/integrations
+integrations:
+  - name: Games
+  - name: Futures
+  - name: Schedule
+  - name: Injuries
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
