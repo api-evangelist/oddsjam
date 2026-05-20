@@ -29,6 +29,10 @@ apis:
       - type: Documentation
         url: https://oddsjam.com/betting-api
 common:
+  - type: GitHubOrganization
+    url: https://github.com/oddsjam
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/oddsjam-inc
   - type: Website
     url: https://oddsjam.com/
   - type: Integrations
