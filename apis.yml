@@ -37,6 +37,8 @@ common:
     url: https://oddsjam.com/
   - type: Integrations
     url: https://oddsjam.com/integrations
+  - type: LLMsTxt
+    url: https://oddsjam.com/llms.txt
 integrations:
   - name: Games
   - name: Futures
