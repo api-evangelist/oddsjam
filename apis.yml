@@ -13,7 +13,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/apis.yml
 created: '2025-02-08'
-modified: '2026-04-28'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: oddsjam:oddsjam
@@ -28,6 +28,14 @@ apis:
     properties:
       - type: Documentation
         url: https://oddsjam.com/betting-api
+      - type: Documentation
+        url: https://developer.opticodds.com/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/openapi/oddsjam-openapi.yml
+      - type: AsyncAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/asyncapi/oddsjam-asyncapi.yml
 common:
   - type: GitHubOrganization
     url: https://github.com/oddsjam

@@ -1,0 +1,518 @@
+asyncapi: '2.6.0'
+info:
+  title: OddsJam (OpticOdds) Streaming API
+  version: '3.0.0'
+  description: >-
+    Real-time streaming surface for the OddsJam / OpticOdds Sports Betting
+    API. Two delivery mechanisms are publicly documented:
+
+    1. Server-Sent Events (SSE) over long-lived HTTPS connections for odds,
+       results, and copilot odds streams, scoped by sport.
+    2. AMQP (RabbitMQ) pull-based consumer queues for the copilot, copilot
+       results, and fixtures results streams. Queue lifecycle (start, stop,
+       status) is managed through REST control endpoints on the v3 API.
+
+    SSE events include a `retry` directive (5000 ms) and a monotonically
+    increasing `entry_id` so clients can resume from the last received event
+    via the `last_entry_id` query parameter, providing exactly-once delivery
+    on reconnection.
+
+    All facts in this document are sourced from the public OpticOdds developer
+    portal: https://developer.opticodds.com/ (SSE Streaming Guide, Getting
+    Started with RabbitMQ, and the streaming reference endpoints listed in
+    https://developer.opticodds.com/llms.txt).
+  contact:
+    name: OddsJam / OpticOdds
+    url: https://developer.opticodds.com/
+  license:
+    name: OpticOdds Terms of Service
+    url: https://opticodds.com/
+defaultContentType: text/event-stream
+servers:
+  sse:
+    url: api.opticodds.com
+    protocol: https
+    description: >-
+      OpticOdds v3 SSE streaming endpoints. Each channel is a long-lived
+      HTTPS GET request that returns `text/event-stream`. Base path for all
+      SSE channels is `/api/v3`.
+    security:
+      - apiKeyHeader: []
+      - apiKeyQuery: []
+  rabbitmq:
+    url: v3-rmq.opticodds.com:5672
+    protocol: amqp
+    description: >-
+      OpticOdds v3 RabbitMQ broker. Authentication uses PLAIN credentials
+      issued by OpticOdds sales (per-API-key). Virtual host is `api`.
+      Queue names are returned in the `/copilot/queue/start`,
+      `/copilot/results/queue/start`, and `/fixtures/results/queue/start`
+      REST responses. Maximum 20 simultaneous connections per account.
+    security:
+      - amqpPlain: []
+channels:
+  /api/v3/stream/odds/{sport}:
+    description: >-
+      Server-Sent Events stream of odds changes, suspensions, and (optional)
+      fixture status updates for a sport. Filterable by sportsbook (required,
+      up to 5 per connection), league, fixture_id, market, is_main, is_live,
+      and odds_format. Up to 10 leagues per connection is recommended.
+    parameters:
+      sport:
+        description: >-
+          Sport slug (e.g. basketball, football, baseball, soccer, tennis,
+          golf, politics). Path parameter; not exhaustively enumerated in the
+          public docs.
+        schema:
+          type: string
+    bindings:
+      http:
+        type: request
+        method: GET
+        query:
+          type: object
+          properties:
+            sportsbook:
+              type: array
+              items:
+                type: string
+              maxItems: 5
+              description: Up to 5 sportsbooks; repeat the parameter for multiples.
+            league:
+              type: array
+              items:
+                type: string
+              description: Filter by league(s); defaults to all.
+            fixture_id:
+              type: array
+              items:
+                type: string
+              description: Target specific fixture(s).
+            market:
+              type: array
+              items:
+                type: string
+              description: Filter market types (Moneyline, Spread, Total, etc.).
+            is_main:
+              type: string
+              enum: ['true', 'false']
+              description: Main lines only when 'true'; alternates when 'false'.
+            is_live:
+              type: string
+              enum: ['true', 'false']
+              description: Live games when 'true'; pre-match when 'false'.
+            odds_format:
+              type: string
+              enum:
+                - AMERICAN
+                - DECIMAL
+                - PROBABILITY
+                - MALAY
+                - HONG_KONG
+                - INDONESIAN
+            exclude_fees:
+              type: string
+              enum: ['true', 'false']
+            include_fixture_updates:
+              type: string
+              enum: ['true', 'false']
+            include_deep_link:
+              type: string
+              enum: ['true', 'false']
+            last_entry_id:
+              type: string
+              description: Resume from a prior event after reconnection.
+            key:
+              type: string
+              description: API key (alternative to X-Api-Key header).
+    subscribe:
+      operationId: streamOdds
+      summary: Receive odds, locked-odds, ping, connected, and fixture-status events.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ConnectedEvent'
+          - $ref: '#/components/messages/PingEvent'
+          - $ref: '#/components/messages/OddsEvent'
+          - $ref: '#/components/messages/LockedOddsEvent'
+          - $ref: '#/components/messages/FixtureStatusEvent'
+  /api/v3/stream/results/{sport}:
+    description: >-
+      Server-Sent Events stream of live scores, game outcomes, and player
+      performance data. OpticOdds recommends a separate connection per
+      league rather than passing multiple leagues per request.
+    parameters:
+      sport:
+        description: Sport slug (path parameter).
+        schema:
+          type: string
+    bindings:
+      http:
+        type: request
+        method: GET
+        query:
+          type: object
+          properties:
+            league:
+              type: array
+              items:
+                type: string
+            fixture_id:
+              type: array
+              items:
+                type: string
+            key:
+              type: string
+    subscribe:
+      operationId: streamResults
+      summary: Receive fixture-results, ping, and connected events.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ConnectedEvent'
+          - $ref: '#/components/messages/PingEvent'
+          - $ref: '#/components/messages/FixtureResultsEvent'
+  /api/v3/stream/copilot/{sport}/odds:
+    description: >-
+      Server-Sent Events stream of copilot odds (new/modified), locked
+      copilot odds, settled copilot odds, and optional fixture status
+      changes. Same filtering knobs as the standard odds stream.
+    parameters:
+      sport:
+        description: Sport slug (path parameter).
+        schema:
+          type: string
+    bindings:
+      http:
+        type: request
+        method: GET
+        query:
+          type: object
+          properties:
+            league:
+              type: array
+              items:
+                type: string
+            market:
+              type: array
+              items:
+                type: string
+            is_live:
+              type: string
+              enum: ['true', 'false']
+            include_fixture_updates:
+              type: string
+              enum: ['true', 'false']
+            last_entry_id:
+              type: string
+            key:
+              type: string
+    subscribe:
+      operationId: streamCopilotOdds
+      summary: >-
+        Receive copilot-odds, copilot-locked-odds, copilot-settled-odds,
+        fixture-status, ping, and connected events.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ConnectedEvent'
+          - $ref: '#/components/messages/PingEvent'
+          - $ref: '#/components/messages/CopilotOddsEvent'
+          - $ref: '#/components/messages/CopilotLockedOddsEvent'
+          - $ref: '#/components/messages/CopilotSettledOddsEvent'
+          - $ref: '#/components/messages/FixtureStatusEvent'
+  copilot-queue:
+    description: >-
+      RabbitMQ queue delivering copilot odds updates. The queue name is
+      returned by the REST control endpoint `POST /api/v3/copilot/queue/start`.
+      Lifecycle is also managed by `POST /api/v3/copilot/queue/stop` and
+      `GET /api/v3/copilot/queue/status`. Messages are pulled (no push).
+      The pika example uses a prefetch of 100 and auto-acknowledgement.
+    bindings:
+      amqp:
+        is: queue
+        queue:
+          durable: true
+          exclusive: false
+          autoDelete: false
+          vhost: api
+    subscribe:
+      operationId: consumeCopilotQueue
+      summary: Consume copilot odds messages from the assigned RabbitMQ queue.
+      message:
+        $ref: '#/components/messages/CopilotQueueMessage'
+  copilot-results-queue:
+    description: >-
+      RabbitMQ queue delivering copilot results updates. Queue name is
+      issued by `POST /api/v3/copilot/results/queue/start`; lifecycle is
+      managed via `POST /api/v3/copilot/results/queue/stop` and
+      `GET /api/v3/copilot/results/queue/status`.
+    bindings:
+      amqp:
+        is: queue
+        queue:
+          durable: true
+          exclusive: false
+          autoDelete: false
+          vhost: api
+    subscribe:
+      operationId: consumeCopilotResultsQueue
+      summary: Consume copilot results messages from the assigned RabbitMQ queue.
+      message:
+        $ref: '#/components/messages/CopilotResultsQueueMessage'
+  fixtures-results-queue:
+    description: >-
+      RabbitMQ queue delivering fixture results updates. Queue name is
+      issued by `POST /api/v3/fixtures/results/queue/start`; lifecycle is
+      managed via `POST /api/v3/fixtures/results/queue/stop` and
+      `GET /api/v3/fixtures/results/queue/status`.
+    bindings:
+      amqp:
+        is: queue
+        queue:
+          durable: true
+          exclusive: false
+          autoDelete: false
+          vhost: api
+    subscribe:
+      operationId: consumeFixturesResultsQueue
+      summary: Consume fixture results messages from the assigned RabbitMQ queue.
+      message:
+        $ref: '#/components/messages/FixtureResultsQueueMessage'
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: httpApiKey
+      in: header
+      name: X-Api-Key
+      description: OpticOdds API key passed in the X-Api-Key header.
+    apiKeyQuery:
+      type: httpApiKey
+      in: query
+      name: key
+      description: OpticOdds API key passed as the `key` query parameter.
+    amqpPlain:
+      type: userPassword
+      description: >-
+        RabbitMQ PLAIN credentials. Username is the assigned API key;
+        password is supplied by the OpticOdds sales team on a per-API-key
+        basis.
+  messages:
+    ConnectedEvent:
+      name: connected
+      title: Connection acknowledgement
+      summary: Confirms successful SSE stream initialization.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: connected
+          data:
+            type: string
+            example: ok go
+          retry:
+            type: integer
+            const: 5000
+    PingEvent:
+      name: ping
+      title: Keepalive ping
+      summary: Periodic keepalive (approximately every 5 seconds) carrying a server timestamp for drift detection.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: ping
+          data:
+            type: string
+            description: ISO-8601 server timestamp.
+    OddsEvent:
+      name: odds
+      title: Odds update
+      summary: Fires when an odd is posted or unsuspended.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: odds
+          id:
+            type: string
+            description: Monotonically increasing entry_id usable for resumption.
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Odd'
+    LockedOddsEvent:
+      name: locked-odds
+      title: Locked odds update
+      summary: Fires when odds are suspended or removed; payload uses the same Odd schema.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: locked-odds
+          id:
+            type: string
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Odd'
+    FixtureStatusEvent:
+      name: fixture-status
+      title: Fixture status update
+      summary: >-
+        Notifies of game status or start time changes. Requires the
+        `include_fixture_updates=true` query parameter.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: fixture-status
+          id:
+            type: string
+          data:
+            type: object
+            description: Old/new status and timing fields per the public docs.
+    FixtureResultsEvent:
+      name: fixture-results
+      title: Fixture results update
+      summary: Delivers updated match data matching the `/fixtures/results` and `/player-results` REST schemas.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: fixture-results
+          id:
+            type: string
+          data:
+            type: object
+            description: Result object with player stats, scores, and fixture details.
+    CopilotOddsEvent:
+      name: copilot-odds
+      title: Copilot odds update
+      summary: New or modified copilot odds.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: copilot-odds
+          id:
+            type: string
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Odd'
+    CopilotLockedOddsEvent:
+      name: copilot-locked-odds
+      title: Copilot locked odds
+      summary: Copilot odds that are unavailable / locked.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: copilot-locked-odds
+          id:
+            type: string
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Odd'
+    CopilotSettledOddsEvent:
+      name: copilot-settled-odds
+      title: Copilot settled odds
+      summary: Copilot odds finalized with bet outcomes / results.
+      contentType: text/event-stream
+      payload:
+        type: object
+        properties:
+          event:
+            type: string
+            const: copilot-settled-odds
+          id:
+            type: string
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Odd'
+    CopilotQueueMessage:
+      name: copilot-queue-message
+      title: Copilot queue message
+      summary: >-
+        AMQP message body delivered through the copilot queue. Exchange
+        naming and full envelope schema are not enumerated in the public
+        documentation; contact OpticOdds sales for implementation specifics.
+      contentType: application/json
+      payload:
+        type: object
+        description: Copilot odds payload (schema not publicly documented).
+    CopilotResultsQueueMessage:
+      name: copilot-results-queue-message
+      title: Copilot results queue message
+      summary: >-
+        AMQP message body delivered through the copilot results queue.
+        Envelope schema is not enumerated in the public documentation.
+      contentType: application/json
+      payload:
+        type: object
+        description: Copilot results payload (schema not publicly documented).
+    FixtureResultsQueueMessage:
+      name: fixture-results-queue-message
+      title: Fixture results queue message
+      summary: >-
+        AMQP message body delivered through the fixtures results queue.
+        Envelope schema is not enumerated in the public documentation.
+      contentType: application/json
+      payload:
+        type: object
+        description: Fixture results payload (schema not publicly documented).
+  schemas:
+    Odd:
+      type: object
+      description: >-
+        Odd object delivered in odds-family SSE events. Field list reflects
+        the public SSE streaming guide; exhaustive schema is not enumerated.
+      properties:
+        id:
+          type: string
+        fixture_id:
+          type: string
+        sportsbook:
+          type: string
+        market:
+          type: string
+        name:
+          type: string
+        selection:
+          type: string
+        price:
+          type: number
+        points:
+          type: number
+        is_main:
+          type: boolean
+        is_live:
+          type: boolean
+        timestamp:
+          type: string
+          format: date-time
+        limits:
+          type: object
+          description: Sportsbook-supplied stake limits, when available.
+        deep_link:
+          type: string
+          description: Sportsbook app deep link when `include_deep_link=true`.
+        order_book:
+          type: object
+          description: Exchange order book data (exchanges only).
