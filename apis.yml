@@ -37,6 +37,12 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/asyncapi/oddsjam-asyncapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/oddsjam-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/oddsjam-domain-security.yml
+  - type: Authentication
+    url: authentication/oddsjam-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/oddsjam
   - type: LinkedIn
