@@ -37,6 +37,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/asyncapi/oddsjam-asyncapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/oddsjam-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/oddsjam-vulnerability-disclosure.yml
   - type: DomainSecurity
