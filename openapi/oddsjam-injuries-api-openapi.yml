@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: OddsJam Fixtures Injuries API
+  description: 'OddsJam (OpticOdds) Sports Betting API providing real-time and historical
+
+    odds, fixtures, players, teams, markets, sportsbooks, injuries, futures,
+
+    grading, and streaming endpoints sourced from 100+ sportsbooks.
+
+    Endpoints documented from the public OpticOdds developer portal
+
+    (https://developer.opticodds.com/llms.txt). Authentication via API key
+
+    passed as a request header or query parameter.
+
+    '
+  version: '3.0'
+  contact:
+    name: OddsJam / OpticOdds
+    url: https://developer.opticodds.com/
+servers:
+- url: https://api.opticodds.com/api/v3
+  description: OpticOdds v3 production API
+security:
+- ApiKeyHeader: []
+- ApiKeyQuery: []
+tags:
+- name: Injuries
+paths:
+  /injuries:
+    get:
+      tags:
+      - Injuries
+      summary: List injuries
+      responses:
+        '200':
+          description: List of injuries
+  /injuries/predictions:
+    get:
+      tags:
+      - Injuries
+      summary: Get injury predictions
+      responses:
+        '200':
+          description: Injury predictions
+components:
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: key

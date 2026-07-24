@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: OddsJam Fixtures Sportsbooks API
+  description: 'OddsJam (OpticOdds) Sports Betting API providing real-time and historical
+
+    odds, fixtures, players, teams, markets, sportsbooks, injuries, futures,
+
+    grading, and streaming endpoints sourced from 100+ sportsbooks.
+
+    Endpoints documented from the public OpticOdds developer portal
+
+    (https://developer.opticodds.com/llms.txt). Authentication via API key
+
+    passed as a request header or query parameter.
+
+    '
+  version: '3.0'
+  contact:
+    name: OddsJam / OpticOdds
+    url: https://developer.opticodds.com/
+servers:
+- url: https://api.opticodds.com/api/v3
+  description: OpticOdds v3 production API
+security:
+- ApiKeyHeader: []
+- ApiKeyQuery: []
+tags:
+- name: Sportsbooks
+paths:
+  /sportsbooks:
+    get:
+      tags:
+      - Sportsbooks
+      summary: List sportsbooks
+      responses:
+        '200':
+          description: List of sportsbooks
+  /sportsbooks/active:
+    get:
+      tags:
+      - Sportsbooks
+      summary: List active sportsbooks
+      responses:
+        '200':
+          description: List of active sportsbooks
+  /sportsbooks/last-polled:
+    get:
+      tags:
+      - Sportsbooks
+      summary: Get last-polled timestamps for sportsbooks
+      responses:
+        '200':
+          description: Last polled timestamps
+components:
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: key
