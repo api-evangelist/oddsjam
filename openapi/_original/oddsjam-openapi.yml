@@ -1,0 +1,328 @@
+openapi: 3.1.0
+info:
+  title: OddsJam API
+  description: |
+    OddsJam (OpticOdds) Sports Betting API providing real-time and historical
+    odds, fixtures, players, teams, markets, sportsbooks, injuries, futures,
+    grading, and streaming endpoints sourced from 100+ sportsbooks.
+    Endpoints documented from the public OpticOdds developer portal
+    (https://developer.opticodds.com/llms.txt). Authentication via API key
+    passed as a request header or query parameter.
+  version: "3.0"
+  contact:
+    name: OddsJam / OpticOdds
+    url: https://developer.opticodds.com/
+servers:
+  - url: https://api.opticodds.com/api/v3
+    description: OpticOdds v3 production API
+security:
+  - ApiKeyHeader: []
+  - ApiKeyQuery: []
+tags:
+  - name: Sports
+  - name: Leagues
+  - name: Sportsbooks
+  - name: Markets
+  - name: Fixtures
+  - name: Teams
+  - name: Players
+  - name: Tournaments
+  - name: Futures
+  - name: Injuries
+  - name: Grader
+  - name: Streaming
+paths:
+  /sports:
+    get:
+      tags: [Sports]
+      summary: List sports
+      responses:
+        "200":
+          description: List of sports
+  /sports/active:
+    get:
+      tags: [Sports]
+      summary: List active sports
+      responses:
+        "200":
+          description: List of active sports
+  /leagues:
+    get:
+      tags: [Leagues]
+      summary: List leagues
+      responses:
+        "200":
+          description: List of leagues
+  /leagues/active:
+    get:
+      tags: [Leagues]
+      summary: List active leagues
+      responses:
+        "200":
+          description: List of active leagues
+  /sportsbooks:
+    get:
+      tags: [Sportsbooks]
+      summary: List sportsbooks
+      responses:
+        "200":
+          description: List of sportsbooks
+  /sportsbooks/active:
+    get:
+      tags: [Sportsbooks]
+      summary: List active sportsbooks
+      responses:
+        "200":
+          description: List of active sportsbooks
+  /sportsbooks/last-polled:
+    get:
+      tags: [Sportsbooks]
+      summary: Get last-polled timestamps for sportsbooks
+      responses:
+        "200":
+          description: Last polled timestamps
+  /markets:
+    get:
+      tags: [Markets]
+      summary: List markets
+      responses:
+        "200":
+          description: List of markets
+  /markets/active:
+    get:
+      tags: [Markets]
+      summary: List active markets
+      responses:
+        "200":
+          description: List of active markets
+  /markets/settleable:
+    get:
+      tags: [Markets]
+      summary: List settleable markets
+      responses:
+        "200":
+          description: List of settleable markets
+  /market-types:
+    get:
+      tags: [Markets]
+      summary: List market types
+      responses:
+        "200":
+          description: List of market types
+  /fixtures:
+    get:
+      tags: [Fixtures]
+      summary: List fixtures
+      responses:
+        "200":
+          description: List of fixtures
+  /fixtures/active:
+    get:
+      tags: [Fixtures]
+      summary: List active fixtures
+      responses:
+        "200":
+          description: List of active fixtures
+  /fixtures/odds:
+    get:
+      tags: [Fixtures]
+      summary: Get odds for fixtures
+      responses:
+        "200":
+          description: Fixture odds
+  /fixtures/odds/historical:
+    get:
+      tags: [Fixtures]
+      summary: Get historical odds for fixtures
+      responses:
+        "200":
+          description: Historical fixture odds
+  /fixtures/results:
+    get:
+      tags: [Fixtures]
+      summary: Get fixture results
+      responses:
+        "200":
+          description: Fixture results
+  /fixtures/results/head-to-head:
+    get:
+      tags: [Fixtures]
+      summary: Get head-to-head fixture results
+      responses:
+        "200":
+          description: Head-to-head results
+  /fixtures/player-results:
+    get:
+      tags: [Fixtures]
+      summary: Get player results for fixtures
+      responses:
+        "200":
+          description: Player results
+  /fixtures/player-results/last-x:
+    get:
+      tags: [Fixtures]
+      summary: Get player results for the last X fixtures
+      responses:
+        "200":
+          description: Player last-X results
+  /fixtures/results/queue/start:
+    post:
+      tags: [Fixtures]
+      summary: Start fixture results queue
+      responses:
+        "200":
+          description: Queue started
+  /fixtures/results/queue/stop:
+    post:
+      tags: [Fixtures]
+      summary: Stop fixture results queue
+      responses:
+        "200":
+          description: Queue stopped
+  /fixtures/results/queue/status:
+    get:
+      tags: [Fixtures]
+      summary: Get fixture results queue status
+      responses:
+        "200":
+          description: Queue status
+  /teams:
+    get:
+      tags: [Teams]
+      summary: List teams
+      responses:
+        "200":
+          description: List of teams
+  /players:
+    get:
+      tags: [Players]
+      summary: List players
+      responses:
+        "200":
+          description: List of players
+  /conferences:
+    get:
+      tags: [Teams]
+      summary: List conferences
+      responses:
+        "200":
+          description: List of conferences
+  /divisions:
+    get:
+      tags: [Teams]
+      summary: List divisions
+      responses:
+        "200":
+          description: List of divisions
+  /tournaments:
+    get:
+      tags: [Tournaments]
+      summary: List tournaments
+      responses:
+        "200":
+          description: List of tournaments
+  /tournaments/results:
+    get:
+      tags: [Tournaments]
+      summary: Get tournament results
+      responses:
+        "200":
+          description: Tournament results
+  /futures:
+    get:
+      tags: [Futures]
+      summary: List futures
+      responses:
+        "200":
+          description: List of futures
+  /futures/odds:
+    get:
+      tags: [Futures]
+      summary: Get futures odds
+      responses:
+        "200":
+          description: Futures odds
+  /grader/futures:
+    get:
+      tags: [Grader]
+      summary: Grade futures
+      responses:
+        "200":
+          description: Graded futures
+  /grader/odds:
+    get:
+      tags: [Grader]
+      summary: Grade odds
+      responses:
+        "200":
+          description: Graded odds
+  /parlay/odds:
+    post:
+      tags: [Grader]
+      summary: Calculate parlay odds
+      responses:
+        "200":
+          description: Parlay odds calculation
+  /injuries:
+    get:
+      tags: [Injuries]
+      summary: List injuries
+      responses:
+        "200":
+          description: List of injuries
+  /injuries/predictions:
+    get:
+      tags: [Injuries]
+      summary: Get injury predictions
+      responses:
+        "200":
+          description: Injury predictions
+  /stream/odds/{sport}:
+    get:
+      tags: [Streaming]
+      summary: Stream odds for a sport
+      parameters:
+        - in: path
+          name: sport
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Server-sent stream of odds
+  /stream/results/{sport}:
+    get:
+      tags: [Streaming]
+      summary: Stream results for a sport
+      parameters:
+        - in: path
+          name: sport
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Server-sent stream of results
+  /stream/copilot/{sport}/odds:
+    get:
+      tags: [Streaming]
+      summary: Stream copilot odds for a sport
+      parameters:
+        - in: path
+          name: sport
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Server-sent copilot odds stream
+components:
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: key

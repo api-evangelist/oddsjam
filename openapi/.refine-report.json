@@ -1,0 +1,36 @@
+{
+  "provider": "oddsjam",
+  "sources": [
+    "oddsjam-fixtures-api-openapi.yml",
+    "oddsjam-futures-api-openapi.yml",
+    "oddsjam-grader-api-openapi.yml",
+    "oddsjam-injuries-api-openapi.yml",
+    "oddsjam-leagues-api-openapi.yml",
+    "oddsjam-markets-api-openapi.yml",
+    "oddsjam-players-api-openapi.yml",
+    "oddsjam-sports-api-openapi.yml",
+    "oddsjam-sportsbooks-api-openapi.yml",
+    "oddsjam-streaming-api-openapi.yml",
+    "oddsjam-teams-api-openapi.yml",
+    "oddsjam-tournaments-api-openapi.yml"
+  ],
+  "outputs": [
+    "oddsjam-fixtures-api-openapi.yml",
+    "oddsjam-futures-api-openapi.yml",
+    "oddsjam-grader-api-openapi.yml",
+    "oddsjam-injuries-api-openapi.yml",
+    "oddsjam-leagues-api-openapi.yml",
+    "oddsjam-markets-api-openapi.yml",
+    "oddsjam-players-api-openapi.yml",
+    "oddsjam-sports-api-openapi.yml",
+    "oddsjam-sportsbooks-api-openapi.yml",
+    "oddsjam-streaming-api-openapi.yml",
+    "oddsjam-teams-api-openapi.yml",
+    "oddsjam-tournaments-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
