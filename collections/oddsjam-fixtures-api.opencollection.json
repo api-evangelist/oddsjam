@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OddsJam Fixtures API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fixtures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fixtures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures"
+          },
+          "docs": "List fixtures"
+        },
+        {
+          "info": {
+            "name": "List active fixtures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/active"
+          },
+          "docs": "List active fixtures"
+        },
+        {
+          "info": {
+            "name": "Get odds for fixtures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/odds"
+          },
+          "docs": "Get odds for fixtures"
+        },
+        {
+          "info": {
+            "name": "Get historical odds for fixtures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/odds/historical"
+          },
+          "docs": "Get historical odds for fixtures"
+        },
+        {
+          "info": {
+            "name": "Get fixture results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/results"
+          },
+          "docs": "Get fixture results"
+        },
+        {
+          "info": {
+            "name": "Get head-to-head fixture results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/results/head-to-head"
+          },
+          "docs": "Get head-to-head fixture results"
+        },
+        {
+          "info": {
+            "name": "Get player results for fixtures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/player-results"
+          },
+          "docs": "Get player results for fixtures"
+        },
+        {
+          "info": {
+            "name": "Get player results for the last X fixtures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/player-results/last-x"
+          },
+          "docs": "Get player results for the last X fixtures"
+        },
+        {
+          "info": {
+            "name": "Start fixture results queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opticodds.com/api/v3/fixtures/results/queue/start"
+          },
+          "docs": "Start fixture results queue"
+        },
+        {
+          "info": {
+            "name": "Stop fixture results queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opticodds.com/api/v3/fixtures/results/queue/stop"
+          },
+          "docs": "Stop fixture results queue"
+        },
+        {
+          "info": {
+            "name": "Get fixture results queue status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/fixtures/results/queue/status"
+          },
+          "docs": "Get fixture results queue status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

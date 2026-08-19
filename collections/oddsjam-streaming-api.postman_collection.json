@@ -1,0 +1,306 @@
+{
+  "item": [
+    {
+      "id": "ecd608c1-a555-4c45-ba3a-b9db8b82aa56",
+      "name": "Streaming",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bab107d9-2540-4f3f-80a5-8994d88182e1",
+          "name": "Stream odds for a sport",
+          "request": {
+            "name": "Stream odds for a sport",
+            "description": {},
+            "url": {
+              "path": [
+                "stream",
+                "odds",
+                ":sport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2947b334-bb85-411c-8eeb-b60bcd491b2b",
+              "name": "Server-sent stream of odds",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "odds",
+                    ":sport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05d53960-64bc-40c7-9970-1518e0905a0d",
+          "name": "Stream results for a sport",
+          "request": {
+            "name": "Stream results for a sport",
+            "description": {},
+            "url": {
+              "path": [
+                "stream",
+                "results",
+                ":sport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf0bf1b7-ee98-4f31-9dbb-659319b9356e",
+              "name": "Server-sent stream of results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "results",
+                    ":sport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb2ab7fc-8131-4a46-826e-a85ba423434d",
+          "name": "Stream copilot odds for a sport",
+          "request": {
+            "name": "Stream copilot odds for a sport",
+            "description": {},
+            "url": {
+              "path": [
+                "stream",
+                "copilot",
+                ":sport",
+                "odds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sport",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dea03e58-5f32-44f5-b5ac-7e2a7bb213ec",
+              "name": "Server-sent copilot odds stream",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stream",
+                    "copilot",
+                    ":sport",
+                    "odds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sport",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opticodds.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8494a150-8563-4cd0-809f-07b4acff406d",
+    "name": "OddsJam Fixtures Streaming API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OddsJam (OpticOdds) Sports Betting API providing real-time and historical\nodds, fixtures, players, teams, markets, sportsbooks, injuries, futures,\ngrading, and streaming endpoints sourced from 100+ sportsbooks.\nEndpoints documented from the public OpticOdds developer portal\n(https://developer.opticodds.com/llms.txt). Authentication via API key\npassed as a request header or query parameter.\n\n\nContact Support:\n Name: OddsJam / OpticOdds",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,802 @@
+{
+  "item": [
+    {
+      "id": "0ad9cbdd-d074-4469-bfa3-ca32a9821fe4",
+      "name": "Fixtures",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "138e6a09-5806-44cf-9994-9c165e688c41",
+          "name": "List fixtures",
+          "request": {
+            "name": "List fixtures",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1a51300-6423-480b-9d47-62a362c5c588",
+              "name": "List of fixtures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74dc136b-46c6-4828-95f1-608c9a66795f",
+          "name": "List active fixtures",
+          "request": {
+            "name": "List active fixtures",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce59de2e-c8a3-421b-8807-c70222013ec2",
+              "name": "List of active fixtures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63b8c9f7-d42b-41d4-9ae2-82006dc34cc6",
+          "name": "Get odds for fixtures",
+          "request": {
+            "name": "Get odds for fixtures",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "odds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4427fa45-782a-4557-a9c8-3134bebcd1e2",
+              "name": "Fixture odds",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "odds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e6f4475-5d75-4ade-90d4-e43fdc65f911",
+          "name": "Get historical odds for fixtures",
+          "request": {
+            "name": "Get historical odds for fixtures",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "odds",
+                "historical"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dff080b2-dee6-403d-99e4-5694f7964ce1",
+              "name": "Historical fixture odds",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "odds",
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d95bfb79-02c0-4f66-bcc9-23e48d80e4b8",
+          "name": "Get fixture results",
+          "request": {
+            "name": "Get fixture results",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "894744a2-bf76-4442-ad12-74946bda4b84",
+              "name": "Fixture results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "881b2fbf-7a17-4f65-bc45-3be057ed9861",
+          "name": "Get head-to-head fixture results",
+          "request": {
+            "name": "Get head-to-head fixture results",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "results",
+                "head-to-head"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6485b3e-6008-4da3-88b8-011c79ccb88e",
+              "name": "Head-to-head results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "results",
+                    "head-to-head"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa59e42e-a0c4-4dea-a811-d82d18ac9284",
+          "name": "Get player results for fixtures",
+          "request": {
+            "name": "Get player results for fixtures",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "player-results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73462278-7e20-4a85-bb7c-62bffd24f074",
+              "name": "Player results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "player-results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "150e4487-3200-4c5d-a4cc-33e340d65394",
+          "name": "Get player results for the last X fixtures",
+          "request": {
+            "name": "Get player results for the last X fixtures",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "player-results",
+                "last-x"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69b1468e-5f53-4df3-b6fe-e6e465819fc6",
+              "name": "Player last-X results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "player-results",
+                    "last-x"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e8131fc-1fc5-4782-a0ef-357ab2861293",
+          "name": "Start fixture results queue",
+          "request": {
+            "name": "Start fixture results queue",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "results",
+                "queue",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eee1e7a7-002a-40be-8e9c-748fcd3775ce",
+              "name": "Queue started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "results",
+                    "queue",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98c93d1c-66f9-4f43-ad27-918c747d8b4c",
+          "name": "Stop fixture results queue",
+          "request": {
+            "name": "Stop fixture results queue",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "results",
+                "queue",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e22585f-bd1b-485f-95e9-ff20f0ef1798",
+              "name": "Queue stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "results",
+                    "queue",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1eb4690e-b8af-43e4-9831-af886edb2f52",
+          "name": "Get fixture results queue status",
+          "request": {
+            "name": "Get fixture results queue status",
+            "description": {},
+            "url": {
+              "path": [
+                "fixtures",
+                "results",
+                "queue",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edad37fb-398e-479a-bf34-de8c600683ca",
+              "name": "Queue status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fixtures",
+                    "results",
+                    "queue",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opticodds.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "30de5d98-7b04-4994-8e97-1e82ad4fdd9f",
+    "name": "OddsJam Fixtures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OddsJam (OpticOdds) Sports Betting API providing real-time and historical\nodds, fixtures, players, teams, markets, sportsbooks, injuries, futures,\ngrading, and streaming endpoints sourced from 100+ sportsbooks.\nEndpoints documented from the public OpticOdds developer portal\n(https://developer.opticodds.com/llms.txt). Authentication via API key\npassed as a request header or query parameter.\n\n\nContact Support:\n Name: OddsJam / OpticOdds",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "item": [
+    {
+      "id": "d1171a22-a3cd-4481-88da-3b614f6604d0",
+      "name": "Tournaments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e9c9806-f2d0-47da-aaa1-599bc6da309d",
+          "name": "List tournaments",
+          "request": {
+            "name": "List tournaments",
+            "description": {},
+            "url": {
+              "path": [
+                "tournaments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9910da40-b1a8-4c8e-9894-426ef4a691dd",
+              "name": "List of tournaments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tournaments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a501ae9-82ea-427b-b65d-ba0e4976f032",
+          "name": "Get tournament results",
+          "request": {
+            "name": "Get tournament results",
+            "description": {},
+            "url": {
+              "path": [
+                "tournaments",
+                "results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a100626-473f-4eb9-b46f-20c5f40686ae",
+              "name": "Tournament results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tournaments",
+                    "results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opticodds.com/api/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a42a297-9b48-481f-aa52-cdc9d74849a3",
+    "name": "OddsJam Fixtures Tournaments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OddsJam (OpticOdds) Sports Betting API providing real-time and historical\nodds, fixtures, players, teams, markets, sportsbooks, injuries, futures,\ngrading, and streaming endpoints sourced from 100+ sportsbooks.\nEndpoints documented from the public OpticOdds developer portal\n(https://developer.opticodds.com/llms.txt). Authentication via API key\npassed as a request header or query parameter.\n\n\nContact Support:\n Name: OddsJam / OpticOdds",
+      "type": "text/plain"
+    }
+  }
+}

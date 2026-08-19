@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OddsJam Fixtures Sportsbooks API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sportsbooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sportsbooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/sportsbooks"
+          },
+          "docs": "List sportsbooks"
+        },
+        {
+          "info": {
+            "name": "List active sportsbooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/sportsbooks/active"
+          },
+          "docs": "List active sportsbooks"
+        },
+        {
+          "info": {
+            "name": "Get last-polled timestamps for sportsbooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opticodds.com/api/v3/sportsbooks/last-polled"
+          },
+          "docs": "Get last-polled timestamps for sportsbooks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
