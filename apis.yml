@@ -194,6 +194,8 @@ apis:
   description: The Teams API from OddsJam — 3 operation(s) for teams.
   humanURL: https://oddsjam.com/betting-api
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
