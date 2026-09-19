@@ -34,6 +34,10 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/oddsjam.pn
 tags:
   - Odds
   - Sports Betting
+  - Sportsbook
+tags_raw:
+  - Odds
+  - Sports Betting
   - Sportsbooks
 url: >-
   https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/apis.yml
@@ -110,6 +114,8 @@ apis:
   description: The Leagues API from OddsJam — 2 operation(s) for leagues.
   humanURL: https://oddsjam.com/betting-api
   tags:
+  - League
+  tags_raw:
   - Leagues
   properties:
   - type: OpenAPI
@@ -142,6 +148,8 @@ apis:
   description: The Players API from OddsJam — 1 operation(s) for players.
   humanURL: https://oddsjam.com/betting-api
   tags:
+  - Player
+  tags_raw:
   - Players
   properties:
   - type: OpenAPI
@@ -174,6 +182,8 @@ apis:
   description: The Sportsbooks API from OddsJam — 3 operation(s) for sportsbooks.
   humanURL: https://oddsjam.com/betting-api
   tags:
+  - Sportsbook
+  tags_raw:
   - Sportsbooks
   properties:
   - type: OpenAPI
