@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OddsJam Fixtures Grader API
+  title: OddsJam Grader API
   description: 'OddsJam (OpticOdds) Sports Betting API providing real-time and historical
 
     odds, fixtures, players, teams, markets, sportsbooks, injuries, futures,
@@ -11,9 +11,7 @@ info:
 
     (https://developer.opticodds.com/llms.txt). Authentication via API key
 
-    passed as a request header or query parameter.
-
-    '
+    passed as a request header or query parameter.'
   version: '3.0'
   contact:
     name: OddsJam / OpticOdds
@@ -35,6 +33,8 @@ paths:
       responses:
         '200':
           description: Graded futures
+      operationId: getGraderFutures
+      x-operation-id-source: derived
   /grader/odds:
     get:
       tags:
@@ -43,6 +43,8 @@ paths:
       responses:
         '200':
           description: Graded odds
+      operationId: getGraderOdds
+      x-operation-id-source: derived
   /parlay/odds:
     post:
       tags:
@@ -51,6 +53,8 @@ paths:
       responses:
         '200':
           description: Parlay odds calculation
+      operationId: postParlayOdds
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyHeader:

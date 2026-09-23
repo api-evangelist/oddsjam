@@ -1,18 +1,7 @@
 {
   "provider": "oddsjam",
   "sources": [
-    "oddsjam-fixtures-api-openapi.yml",
-    "oddsjam-futures-api-openapi.yml",
-    "oddsjam-grader-api-openapi.yml",
-    "oddsjam-injuries-api-openapi.yml",
-    "oddsjam-leagues-api-openapi.yml",
-    "oddsjam-markets-api-openapi.yml",
-    "oddsjam-players-api-openapi.yml",
-    "oddsjam-sports-api-openapi.yml",
-    "oddsjam-sportsbooks-api-openapi.yml",
-    "oddsjam-streaming-api-openapi.yml",
-    "oddsjam-teams-api-openapi.yml",
-    "oddsjam-tournaments-api-openapi.yml"
+    "_original/oddsjam-openapi.yml"
   ],
   "outputs": [
     "oddsjam-fixtures-api-openapi.yml",
@@ -31,6 +20,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "oddsjam-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "oddsjam-fixtures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-futures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-grader-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-injuries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-leagues-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-markets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-players-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-sports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-sportsbooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-streaming-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oddsjam-tournaments-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

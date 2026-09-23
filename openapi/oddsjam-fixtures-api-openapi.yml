@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: OddsJam Fixtures API
   description: 'OddsJam (OpticOdds) Sports Betting API providing real-time and historical
@@ -11,9 +11,7 @@ info:
 
     (https://developer.opticodds.com/llms.txt). Authentication via API key
 
-    passed as a request header or query parameter.
-
-    '
+    passed as a request header or query parameter.'
   version: '3.0'
   contact:
     name: OddsJam / OpticOdds
@@ -35,6 +33,8 @@ paths:
       responses:
         '200':
           description: List of fixtures
+      operationId: getFixtures
+      x-operation-id-source: derived
   /fixtures/active:
     get:
       tags:
@@ -43,6 +43,8 @@ paths:
       responses:
         '200':
           description: List of active fixtures
+      operationId: getFixturesActive
+      x-operation-id-source: derived
   /fixtures/odds:
     get:
       tags:
@@ -51,6 +53,8 @@ paths:
       responses:
         '200':
           description: Fixture odds
+      operationId: getFixturesOdds
+      x-operation-id-source: derived
   /fixtures/odds/historical:
     get:
       tags:
@@ -59,6 +63,8 @@ paths:
       responses:
         '200':
           description: Historical fixture odds
+      operationId: getFixturesOddsHistorical
+      x-operation-id-source: derived
   /fixtures/results:
     get:
       tags:
@@ -67,6 +73,8 @@ paths:
       responses:
         '200':
           description: Fixture results
+      operationId: getFixturesResults
+      x-operation-id-source: derived
   /fixtures/results/head-to-head:
     get:
       tags:
@@ -75,6 +83,8 @@ paths:
       responses:
         '200':
           description: Head-to-head results
+      operationId: getFixturesResultsHeadToHead
+      x-operation-id-source: derived
   /fixtures/player-results:
     get:
       tags:
@@ -83,6 +93,8 @@ paths:
       responses:
         '200':
           description: Player results
+      operationId: getFixturesPlayerResults
+      x-operation-id-source: derived
   /fixtures/player-results/last-x:
     get:
       tags:
@@ -91,6 +103,8 @@ paths:
       responses:
         '200':
           description: Player last-X results
+      operationId: getFixturesPlayerResultsLastX
+      x-operation-id-source: derived
   /fixtures/results/queue/start:
     post:
       tags:
@@ -99,6 +113,8 @@ paths:
       responses:
         '200':
           description: Queue started
+      operationId: postFixturesResultsQueueStart
+      x-operation-id-source: derived
   /fixtures/results/queue/stop:
     post:
       tags:
@@ -107,6 +123,8 @@ paths:
       responses:
         '200':
           description: Queue stopped
+      operationId: postFixturesResultsQueueStop
+      x-operation-id-source: derived
   /fixtures/results/queue/status:
     get:
       tags:
@@ -115,6 +133,8 @@ paths:
       responses:
         '200':
           description: Queue status
+      operationId: getFixturesResultsQueueStatus
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyHeader:
