@@ -46,7 +46,7 @@ tags_raw:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/apis.yml
 created: '2025-02-08'
-modified: '2026-05-30'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: oddsjam:oddsjam-fixtures-api
@@ -250,6 +250,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/oddsjam/refs/heads/main/asyncapi/oddsjam-asyncapi.yml
 common:
+  - url: https://oddsjam.com/press
+    type: Blog
   - type: AgenticAccess
     url: agentic-access/oddsjam-agentic-access.yml
   - type: VulnerabilityDisclosure
